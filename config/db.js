@@ -9,15 +9,17 @@ if (!atlasUri) {
   process.exit(1);
 }
 
-// Connect to MongoDB Atlas
+// Connect to MongoDB Atlas with minimal options
 mongoose.connect(atlasUri, {
   useNewUrlParser: true,
-  useUnifiedTopology: true,
-  
+  useUnifiedTopology: true
+}).catch(err => {
+  console.error('MongoDB connection error:', err);
+  process.exit(1);
 });
-
+ 
 const db = mongoose.connection;
-
+ 
 // Error handling
 db.on('error', (error) => {
   console.error('MongoDB connection error:', error);
@@ -30,3 +32,4 @@ db.once('open', () => {
 });
 
 module.exports = db;
+ 
