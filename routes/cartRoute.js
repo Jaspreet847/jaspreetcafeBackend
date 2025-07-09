@@ -20,10 +20,10 @@ router.post('/checkout', async (req, res) => {
   ).join('');
   
   const emailHtml = `
-    <h2>Deep Cafe Invoice</h2>
+    <h2>Jaspreet Cafe Invoice</h2>
     <ul>${itemList}</ul>
     <p><strong>Total: ₹${total}</strong></p>
-    <p>Thank you for shopping with Deep Cafe!</p>
+    <p>Thank you for shopping with Jaspreet Cafe!</p>
   `;
 
   const transporter = nodemailer.createTransport({
@@ -35,9 +35,9 @@ router.post('/checkout', async (req, res) => {
   });
 
   const mailOptions = {
-    from: `Deep Cafe <${EMAIL_USER}>`,
+    from: `Jaspreet Cafe <${EMAIL_USER}>`,
     to: userEmail,
-    subject: 'Your Invoice from Deep Cafe',
+    subject: 'Your Invoice from Jaspreet Cafe',
     html: emailHtml
   };
 
